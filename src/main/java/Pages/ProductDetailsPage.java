@@ -12,10 +12,38 @@ public class ProductDetailsPage extends PageBase {
     //locator
     By productTitle = By.xpath("//div[@class='col-sm-4']//h1");
     By productImage = By.id("main-product-img-4");
+    By writeReviewLink = By.linkText("Write a review");
+    By yourReviewTxt = By.id("input-review");
+    By radioBtn = By.xpath("//input[@value='3']");
+    By continueBtn = By.id("button-review");
+    By message = By.xpath("//div[contains(@class,'alert-success')]");
+    String productData = "ProductData.json";
 
     //method
-    public String assertThatProductNameIsDisplayed(){
+    public void clickOnWriteReview() {
+        clickOnButton(writeReviewLink);
+    }
+
+    public void writeProductReview() {
+        setElementText(yourReviewTxt, jsonReader("reviewText", productData));
+    }
+
+    public void userClickOnRadioBtn() {
+        clickOnButton(radioBtn);
+    }
+
+    public void userClickOnContinueBtn() {
+        clickOnButton(continueBtn);
+    }
+
+    //assert
+    public String assertThatProductNameIsDisplayed() {
         return find(productTitle).getText();
+    }
+
+    public boolean assertThatProductReviewIsSubmitted() {
+        find(message).isDisplayed();
+        return true;
     }
 
 }
