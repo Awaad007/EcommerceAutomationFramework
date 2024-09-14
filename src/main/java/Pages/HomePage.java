@@ -20,6 +20,9 @@ public class HomePage extends PageBase {
     By myAccountLink = By.linkText("My account");
     By contactUsLink = By.linkText("Contact Us");
     By myAccountDropDown = By.cssSelector("a[class=dropdown-toggle]");
+    By currencyDropDown = By.id("form-currency");
+    By euroCurrency = By.name("EUR");
+    public By CurrencyLogo = By.xpath("//button[@class='btn btn-link dropdown-toggle']//strong");
 
     //methods
     public void openRegisterPage() {
@@ -41,10 +44,23 @@ public class HomePage extends PageBase {
         clickOnButton(contactUsLink);
     }
 
+    public void clickOnCurrencyDropDown(){
+        clickOnButton(currencyDropDown);
+    }
+    public void selectEuro(){
+        clickOnButton(euroCurrency);
+    }
+
     //assert
     public boolean assertThatUserLoggedIn() {
         clickOnButton(myAccountDropDown);
         find(logoutLink).isDisplayed();
         return true;
     }
+
+    public String assertThatCurrencyIsEuro(){
+        return find(CurrencyLogo).getText();
+    }
+
+
 }
