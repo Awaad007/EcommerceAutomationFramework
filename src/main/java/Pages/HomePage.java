@@ -5,12 +5,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.interactions.Actions;
 
 public class HomePage extends PageBase {
     public HomePage(WebDriver driver) {
         super(driver);
         jse = (JavascriptExecutor) driver;
+        this.action = new Actions(driver);
     }
 
     //locators
@@ -22,7 +23,10 @@ public class HomePage extends PageBase {
     By myAccountDropDown = By.cssSelector("a[class=dropdown-toggle]");
     By currencyDropDown = By.id("form-currency");
     By euroCurrency = By.name("EUR");
-    public By CurrencyLogo = By.xpath("//button[@class='btn btn-link dropdown-toggle']//strong");
+    By deskTopDropDown = By.linkText("Desktops");
+    By macOption = By.linkText("Mac (1)");
+    public By currencyLogo = By.xpath("//button[@class='btn btn-link dropdown-toggle']//strong");
+    public By productName = By.xpath("//div[@id='content']//h2");
 
     //methods
     public void openRegisterPage() {
@@ -50,6 +54,14 @@ public class HomePage extends PageBase {
     public void selectEuro(){
         clickOnButton(euroCurrency);
     }
+    public void hoverOverDesktop(){
+        WebElement deskDropDown = driver.findElement(deskTopDropDown);
+        action.moveToElement(deskDropDown).build().perform();
+    }
+    public void selectMacOption(){
+        WebElement macOpt = driver.findElement(macOption);
+        action.moveToElement(macOpt).click().build().perform();
+    }
 
     //assert
     public boolean assertThatUserLoggedIn() {
@@ -59,7 +71,11 @@ public class HomePage extends PageBase {
     }
 
     public String assertThatCurrencyIsEuro(){
-        return find(CurrencyLogo).getText();
+        return find(currencyLogo).getText();
+    }
+    public boolean asserThatUserNavigatedToProduct(){
+        find(productName).isDisplayed();
+        return true;
     }
 
 
