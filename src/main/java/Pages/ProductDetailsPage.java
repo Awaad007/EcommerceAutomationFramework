@@ -16,6 +16,8 @@ public class ProductDetailsPage extends PageBase {
     By yourReviewTxt = By.id("input-review");
     By radioBtn = By.xpath("//input[@value='3']");
     By continueBtn = By.id("button-review");
+    By wishListBtn = By.xpath("//button[contains(@data-original-title,'Wish')]");
+    By wishListLink = By.linkText("wish list");
     By message = By.xpath("//div[contains(@class,'alert-success')]");
     String productData = "ProductData.json";
 
@@ -34,6 +36,12 @@ public class ProductDetailsPage extends PageBase {
 
     public void userClickOnContinueBtn() {
         clickOnButton(continueBtn);
+    }
+    public void userClickOnWishListBtn(){
+        clickOnButton(wishListBtn);
+    }
+    public void userNavigateToWishListPage(){
+        clickOnButton(wishListLink);
     }
 
     //assert
