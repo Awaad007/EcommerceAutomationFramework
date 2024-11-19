@@ -18,16 +18,26 @@ public class SearchPage extends PageBase {
     By allCategoriesDropDown = By.name("category_id");
     By productTitle = By.partialLinkText("MacBook Air");
 
-    String searchData = "ProductData.json";
-    public String productName = jsonReader("verifyProductName", searchData);
+    By compareBtn = By.xpath("//a[contains(@href, 'id=43&search')]/ancestor::div[2]//button[contains(@data-original-title, 'Compare')]");
+    By compareLink = By.linkText("product comparison");
 
     //methods
-    public void userEnterProductName() {
-        setElementText(searchFieldTxt, jsonReader("productName", searchData));
+    public SearchPage userEnterProductName(String productName) {
+        setElementText(searchFieldTxt, productName);
+        return this;
     }
 
-    public void userClickOnSearchBtn() {
+    public SearchPage userClickOnSearchBtn() {
         clickOnButton(searchBtn);
+        return this;
+    }
+    public SearchPage userTapOnCompareBtn(){
+        clickOnButton(compareBtn);
+        return this;
+    }
+    public SearchPage userNavigateToCompareScreen(){
+        clickOnButton(compareLink);
+        return this;
     }
 
     public void selectCategory() {

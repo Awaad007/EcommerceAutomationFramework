@@ -8,9 +8,9 @@ public class WishListPage extends PageBase {
     public WishListPage(WebDriver driver) {
         super(driver);
     }
-    String searchData = "ProductData.json";
+    String productData = "DynamicData.json";
 
-    public String productName = jsonReader("verifyProductName", searchData);
+    public String productName = jsonReader("ProductName", productData);
 
     //locators
     //Dynamic locator for choosing specific product to be removed form wishList

@@ -11,6 +11,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.io.*;
+import java.util.List;
 
 public class PageBase {
 
@@ -33,6 +34,9 @@ public class PageBase {
     }
     protected WebElement find(By locator){
         return driver.findElement(locator);
+    }
+    protected List<WebElement> elementsList(By locator){
+        return driver.findElements(locator);
     }
     public void scrollToBottom(){
         jse.executeScript("scrollBy(0,2500)");

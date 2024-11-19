@@ -15,19 +15,18 @@ public class MyAccountPage extends PageBase {
     By confirmPasswordTxt = By.name("confirm");
     By changePasswordBtn = By.cssSelector("input[type='submit']");
     By notificationBar = By.cssSelector("div.alert");
-    String changePasswordData = "ChangePassword.json";
 
     //Methods
     public void clickOnChangePasswordPage() {
         clickOnButton(changePasswordLink);
     }
 
-    public void enterNewPassword() {
-        setElementText(newPasswordTxt, jsonReader("newPassword", changePasswordData));
+    public void enterNewPassword(String newPassword) {
+        setElementText(newPasswordTxt, newPassword);
     }
 
-    public void confirmNewPassword() {
-        setElementText(confirmPasswordTxt, jsonReader("confirmPassword", changePasswordData));
+    public void confirmNewPassword(String confirmNewPassword) {
+        setElementText(confirmPasswordTxt, confirmNewPassword);
     }
 
     public void clickOnChangePasswordBtn() {

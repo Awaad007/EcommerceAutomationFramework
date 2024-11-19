@@ -20,34 +20,29 @@ public class RegisterPage extends PageBase {
     By submitBtn = By.cssSelector("input[type=submit]");
     public By successMessage = By.xpath("//div[@id='content']//h1");
 
-    String registerData = "RegisterCredentials.json";
-
-
     //methods
-    public void userSetFirstName() {
-        System.out.println(jsonReader("firstName", registerData));
-        setElementText(firstNameTxt, jsonReader("firstName", registerData));
+    public void userSetFirstName(String firstname) {
+        setElementText(firstNameTxt, firstname);
     }
 
-    public void userSetLastName() {
-        setElementText(lastNameTxt, jsonReader("lastName", registerData));
+    public void userSetLastName(String lastName) {
+        setElementText(lastNameTxt, lastName);
     }
 
-    public void userSetEmailAddress() {
-        setElementText(emailAddressTxt, jsonReader("emailAddress", registerData));
+    public void userSetEmailAddress(String emailAddress) {
+        setElementText(emailAddressTxt, emailAddress);
     }
 
-    public void userSetPhoneNumber() {
-        setElementText(telephoneNum, jsonReader("telephoneNumber", registerData));
+    public void userSetPhoneNumber(String telephoneNumber) {
+        setElementText(telephoneNum, telephoneNumber);
     }
 
-    public void userSetPassword() {
-        System.out.println(jsonReader("password", registerData));
-        setElementText(passwordTxt, jsonReader("password", registerData));
+    public void userSetPassword(String password) {
+        setElementText(passwordTxt, password);
     }
 
-    public void userSetConfirmationPassword() {
-        setElementText(confirmPasswordTxt, jsonReader("password", registerData));
+    public void userSetConfirmationPassword(String confirmPassword) {
+        setElementText(confirmPasswordTxt, confirmPassword);
     }
 
     public void userClickOnRegisterBtn() {

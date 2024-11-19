@@ -8,10 +8,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
+import static utilities.JsonReader.getJsonValue;
 
 public class TC03_UserCanUpdatePassword {
     MyAccountPage accountObject;
-
+    String changePasswordData = "ChangePassword.json";
     @Given("user tap on change password button")
     public void userTapOnChangePasswordButton() {
         accountObject = new MyAccountPage(Hooks.driver);
@@ -20,12 +21,12 @@ public class TC03_UserCanUpdatePassword {
 
     @When("user enter new password")
     public void userEnterNewPassword() {
-        accountObject.enterNewPassword();
+        accountObject.enterNewPassword(getJsonValue("newPassword", changePasswordData));
     }
 
     @And("user confirm new password")
     public void userConfirmNewPassword() {
-        accountObject.confirmNewPassword();
+        accountObject.confirmNewPassword(getJsonValue("confirmPassword", changePasswordData));
     }
 
     @And("user click on change password button")
