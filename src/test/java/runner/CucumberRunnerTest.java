@@ -10,6 +10,6 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = {"steps", "connector"},
         tags = "@Run",
-        plugin = {"pretty","io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"})
-public class CucumberTestRunner{
+        plugin = {"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm","json:target/allure-results/cucumber.json"})
+public class CucumberRunnerTest {
 }

@@ -17,17 +17,18 @@ public class ProductDetailsPage extends PageBase {
     By radioBtn = By.xpath("//input[@value='3']");
     By continueBtn = By.id("button-review");
     By wishListBtn = By.xpath("//button[contains(@data-original-title,'Wish')]");
+    By compareBtn = By.xpath("//button[contains(@data-original-title,'Compare')]");
     By wishListLink = By.linkText("wish list");
+    By compareLink = By.linkText("product comparison");
     By message = By.xpath("//div[contains(@class,'alert-success')]");
-    String productData = "ProductData.json";
 
     //method
     public void clickOnWriteReview() {
         clickOnButton(writeReviewLink);
     }
 
-    public void writeProductReview() {
-        setElementText(yourReviewTxt, jsonReader("reviewText", productData));
+    public void writeProductReview(String reviewText) {
+        setElementText(yourReviewTxt, reviewText);
     }
 
     public void userClickOnRadioBtn() {
@@ -42,6 +43,12 @@ public class ProductDetailsPage extends PageBase {
     }
     public void userNavigateToWishListPage(){
         clickOnButton(wishListLink);
+    }
+    public void userClickOnCompareBtn(){
+        clickOnButton(compareBtn);
+    }
+    public void userNavigateToComparePage(){
+        clickOnButton(compareLink);
     }
 
     //assert

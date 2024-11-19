@@ -15,19 +15,18 @@ public class ContactUsPage extends PageBase {
     By enquiryTxt = By.id("input-enquiry");
     By submitBtn = By.cssSelector("input[type=submit]");
     By successMessage = By.xpath("//div[@id='content']//p");
-    String contactUsData = "ContactUsData.json";
 
     //methods
-    public void userAddFullName() {
-        setElementText(nameTxt, jsonReader("fullName", contactUsData));
+    public void userAddFullName(String name) {
+        setElementText(nameTxt, name);
     }
 
-    public void userAddEnquiry() {
-        setElementText(enquiryTxt, jsonReader("enquiry", contactUsData));
+    public void userAddEnquiry(String enquiry) {
+        setElementText(enquiryTxt, enquiry);
     }
 
-    public void userEnterEmail() {
-        setElementText(emailTxt, jsonReader("emailAddress", contactUsData));
+    public void userEnterEmail(String emailAddress) {
+        setElementText(emailTxt, emailAddress);
     }
 
     public void userClickOnSubmitBtn() {

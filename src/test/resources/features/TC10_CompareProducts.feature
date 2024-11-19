@@ -1,5 +1,4 @@
-@Run
-Feature: WishList
+Feature: Compare
   Background:
     Given user at home screen and click on login button
     When user enters "mohamed005@yahoo.com" address
@@ -9,9 +8,11 @@ Feature: WishList
     When user click on search button
     And user select category
     And user click on product title
-    
-  Scenario: Add product to wishlist
-    Given user at product screen and click on add to wishlist button
-    When user click on wishlist page link
-    And user tap on remove button
-    Then success message should appear to user
+
+    Scenario: Compare products
+      Given user click on compare button
+      When navigate to compare screen
+      And user add second product to compare list
+      And user comparing products
+      And taps on remove button
+      Then placeholder message should appear to user
