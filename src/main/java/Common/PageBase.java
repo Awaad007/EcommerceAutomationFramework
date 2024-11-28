@@ -32,6 +32,10 @@ public class PageBase {
         WebElement element = driver.findElement(button);
         element.click();
     }
+    protected void clearElementText(By locator){
+        WebElement element = driver.findElement(locator);
+        element.clear();
+    }
     protected WebElement find(By locator){
         return driver.findElement(locator);
     }

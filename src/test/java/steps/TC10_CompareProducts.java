@@ -47,6 +47,4 @@ public class TC10_CompareProducts {
     public void placeholderMessageShouldAppearToUser() {
         compareObject.assertThatProductRemoved();
     }
-
-
 }

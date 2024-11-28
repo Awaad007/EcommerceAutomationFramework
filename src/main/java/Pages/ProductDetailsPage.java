@@ -20,6 +20,8 @@ public class ProductDetailsPage extends PageBase {
     By compareBtn = By.xpath("//button[contains(@data-original-title,'Compare')]");
     By wishListLink = By.linkText("wish list");
     By compareLink = By.linkText("product comparison");
+    By addToCartBtn = By.id("button-cart");
+    By addToCartLink = By.linkText("shopping cart");
     By message = By.xpath("//div[contains(@class,'alert-success')]");
 
     //method
@@ -49,6 +51,12 @@ public class ProductDetailsPage extends PageBase {
     }
     public void userNavigateToComparePage(){
         clickOnButton(compareLink);
+    }
+    public void userClickOnAddToCartBtn(){
+        clickOnButton(addToCartBtn);
+    }
+    public void userNavigateToAddToCartPage(){
+        clickOnButton(addToCartLink);
     }
 
     //assert
