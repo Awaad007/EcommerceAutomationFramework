@@ -21,6 +21,7 @@ public class ShoppingCartPage extends PageBase {
     By quotesBtn = By.id("button-quote");
     By radioBtn = By.name("shipping_method");
     By applyShippingBtn = By.id("button-shipping");
+    By checkoutBtn = By.linkText("Checkout");
     By message = By.xpath("//div[contains(@class,'alert-success')]");
 
     //methods
@@ -64,6 +65,9 @@ public class ShoppingCartPage extends PageBase {
         clickOnButton(applyShippingBtn);
     }
 
+    public void userClickOnCheckoutBtn(){
+        clickOnButton(checkoutBtn);
+    }
     //assert
     public boolean assertThatShippingEstimateApplied(){
         find(message).isDisplayed();
