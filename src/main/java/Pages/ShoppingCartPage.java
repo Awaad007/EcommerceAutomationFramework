@@ -4,6 +4,7 @@ import Common.PageBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 public class ShoppingCartPage extends PageBase {
@@ -38,12 +39,14 @@ public class ShoppingCartPage extends PageBase {
     }
     public ShoppingCartPage selectCountry(String country){
         WebElement countryList = driver.findElement(selectCountry);
+        wait.until(ExpectedConditions.visibilityOf(countryList));
         select = new Select(countryList);
         select.selectByVisibleText(country);
         return this;
     }
     public ShoppingCartPage selectState(String state){
         WebElement stateList = driver.findElement(selectState);
+        wait.until(ExpectedConditions.visibilityOf(stateList));
         select = new Select(stateList);
         select.selectByVisibleText(state);
         return this;

@@ -8,6 +8,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -24,7 +25,7 @@ public class PageBase {
     public JavascriptExecutor jse;
     public PageBase(WebDriver driver){
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
     protected void setElementText(By textElementText, String value){
         WebElement element = driver.findElement(textElementText);
@@ -33,6 +34,7 @@ public class PageBase {
     protected void clickOnButton(By button){
 
         WebElement element = driver.findElement(button);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
     protected void clearElementText(By locator){

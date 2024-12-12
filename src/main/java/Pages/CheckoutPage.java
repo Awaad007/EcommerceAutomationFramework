@@ -1,11 +1,12 @@
 package Pages;
 
 import Common.PageBase;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CheckoutPage extends PageBase {
     public CheckoutPage(WebDriver driver) {
@@ -30,8 +31,23 @@ public class CheckoutPage extends PageBase {
     By confirmationMsn = By.xpath("//div[@id= 'content']/child::h1");
     //methods
 
-    public CheckoutPage userSelectNewAddress(){
-        clickOnButton(newAddressRadioBtn);
+    public CheckoutPage userSelectNewAddress() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0)); // Temporarily disable implicit wait
+        try {
+            // Wait for up to 5 seconds for the radio button to appear in the DOM
+            WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebElement radioButton = shortWait.until(ExpectedConditions.presenceOfElementLocated(newAddressRadioBtn));
+
+            if (radioButton.isDisplayed()) {
+                System.out.println("Radio button is visible. Clicking on it.");
+                radioButton.click(); // Perform the click directly
+            }
+        } catch (TimeoutException e) {
+            System.out.println("Radio button is not present. Proceeding with creating a new address.");
+        }
+        finally {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // Restore implicit wait
+    }
         return this;
     }
 
@@ -76,14 +92,20 @@ public class CheckoutPage extends PageBase {
         return this;
     }
     public CheckoutPage clickDetailsContinueBtn(){
+        WebElement element = find(continueDetailsBtn);
+        wait.until(ExpectedConditions.visibilityOf(element));
         clickOnButton(continueDetailsBtn);
         return this;
     }
     public CheckoutPage clickDeliveryContinueBtn(){
+        WebElement element = find(continueDeliveryBtn);
+        wait.until(ExpectedConditions.visibilityOf(element));
         clickOnButton(continueDeliveryBtn);
         return this;
     }
     public CheckoutPage clickPaymentContinueBtn(){
+        WebElement element = find(continuePaymentBtn);
+        wait.until(ExpectedConditions.visibilityOf(element));
         clickOnButton(continuePaymentBtn);
         return this;
     }
