@@ -7,19 +7,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class SearchPage extends PageBase {
+
+
+    //locators
+    private final By searchFieldTxt = By.name("search");
+    private final By searchBtn = By.cssSelector(".input-group-btn");
+    private final By dropDownList = By.id("ui-id-1");
+    private final By allCategoriesDropDown = By.name("category_id");
+    private final By productTitle = By.partialLinkText("MacBook Air");
+
+    private final By compareBtn = By.xpath("//a[contains(@href, 'id=43&search')]/ancestor::div[2]//button[contains(@data-original-title, 'Compare')]");
+    private final By compareLink = By.linkText("product comparison");
+
     public SearchPage(WebDriver driver) {
         super(driver);
     }
-
-    //locators
-    By searchFieldTxt = By.name("search");
-    By searchBtn = By.cssSelector(".input-group-btn");
-    By dropDownList = By.id("ui-id-1");
-    By allCategoriesDropDown = By.name("category_id");
-    By productTitle = By.partialLinkText("MacBook Air");
-
-    By compareBtn = By.xpath("//a[contains(@href, 'id=43&search')]/ancestor::div[2]//button[contains(@data-original-title, 'Compare')]");
-    By compareLink = By.linkText("product comparison");
 
     //methods
     public SearchPage userEnterProductName(String productName) {
@@ -31,11 +33,13 @@ public class SearchPage extends PageBase {
         clickOnButton(searchBtn);
         return this;
     }
-    public SearchPage userTapOnCompareBtn(){
+
+    public SearchPage userTapOnCompareBtn() {
         clickOnButton(compareBtn);
         return this;
     }
-    public SearchPage userNavigateToCompareScreen(){
+
+    public SearchPage userNavigateToCompareScreen() {
         clickOnButton(compareLink);
         return this;
     }

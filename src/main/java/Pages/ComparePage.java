@@ -9,15 +9,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
 public class ComparePage extends PageBase {
+
+    //locators
+    private final By allRows = By.tagName("tr");
+    private final By allCol = By.tagName("td");
+    private final By removeBtn = By.xpath("//a[contains(@href,'remove=44')]");
+    private final By message = By.xpath("//div[contains(@class,'alert-success')]");
+
     public ComparePage(WebDriver driver) {
         super(driver);
     }
-
-    //locators
-    By allRows = By.tagName("tr");
-    By allCol = By.tagName("td");
-    By removeBtn = By.xpath("//a[contains(@href,'remove=44')]");
-    By message = By.xpath("//div[contains(@class,'alert-success')]");
 
     //methods
     public void CompareProduct() {

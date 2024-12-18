@@ -5,16 +5,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class MyAccountPage extends PageBase {
+
+
+    //locators
+    private final By changePasswordLink = By.linkText("Change your password");
+    private final By newPasswordTxt = By.name("password");
+    private final By confirmPasswordTxt = By.name("confirm");
+    private final By changePasswordBtn = By.cssSelector("input[type='submit']");
+    private final By notificationBar = By.cssSelector("div.alert");
+
     public MyAccountPage(WebDriver driver) {
         super(driver);
     }
-
-    //locators
-    By changePasswordLink = By.linkText("Change your password");
-    By newPasswordTxt = By.name("password");
-    By confirmPasswordTxt = By.name("confirm");
-    By changePasswordBtn = By.cssSelector("input[type='submit']");
-    By notificationBar = By.cssSelector("div.alert");
 
     //Methods
     public void clickOnChangePasswordPage() {
@@ -33,6 +35,7 @@ public class MyAccountPage extends PageBase {
         clickOnButton(changePasswordBtn);
     }
 
+    //assert
     public boolean assertThatPasswordChanged() {
         find(notificationBar).isDisplayed();
         return true;
