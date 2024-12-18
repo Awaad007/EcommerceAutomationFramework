@@ -18,40 +18,47 @@ import java.util.List;
 
 public class PageBase {
 
-    public WebDriver driver;
-    public WebDriverWait wait;
-    public Select select;
-    public Actions action;
-    public JavascriptExecutor jse;
-    public PageBase(WebDriver driver){
+    protected WebDriver driver;
+    protected WebDriverWait wait;
+    protected Select select;
+    protected Actions action;
+    protected JavascriptExecutor jse;
+
+    protected PageBase(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
-    protected void setElementText(By textElementText, String value){
+
+    protected void setElementText(By textElementText, String value) {
         WebElement element = driver.findElement(textElementText);
         element.sendKeys(value);
     }
-    protected void clickOnButton(By button){
+
+    protected void clickOnButton(By button) {
 
         WebElement element = driver.findElement(button);
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
-    protected void clearElementText(By locator){
+
+    protected void clearElementText(By locator) {
         WebElement element = driver.findElement(locator);
         element.clear();
     }
-    protected WebElement find(By locator){
+
+    protected WebElement find(By locator) {
         return driver.findElement(locator);
     }
-    protected List<WebElement> elementsList(By locator){
+
+    protected List<WebElement> elementsList(By locator) {
         return driver.findElements(locator);
     }
-    public void scrollToBottom(){
+
+    protected void scrollToBottom() {
         jse.executeScript("scrollBy(0,2500)");
     }
 
-    public String jsonReader(String obj, String fileNme) {
+    protected String jsonReader(String obj, String fileNme) {
         File srcFile = new File(System.getProperty("user.dir") +
                 "/src/main/java/data/" + fileNme);
         JSONParser parser = new JSONParser();

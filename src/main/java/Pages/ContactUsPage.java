@@ -5,16 +5,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class ContactUsPage extends PageBase {
+    //locators
+    private final By nameTxt = By.id("input-name");
+    private final By emailTxt = By.id("input-email");
+    private final By enquiryTxt = By.id("input-enquiry");
+    private final By submitBtn = By.cssSelector("input[type=submit]");
+    private final By successMessage = By.xpath("//div[@id='content']//p");
+
     public ContactUsPage(WebDriver driver) {
         super(driver);
     }
 
-    //locators
-    By nameTxt = By.id("input-name");
-    By emailTxt = By.id("input-email");
-    By enquiryTxt = By.id("input-enquiry");
-    By submitBtn = By.cssSelector("input[type=submit]");
-    By successMessage = By.xpath("//div[@id='content']//p");
 
     //methods
     public void userAddFullName(String name) {
