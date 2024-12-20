@@ -58,21 +58,5 @@ public class PageBase {
         jse.executeScript("scrollBy(0,2500)");
     }
 
-    protected String jsonReader(String obj, String fileNme) {
-        File srcFile = new File(System.getProperty("user.dir") +
-                "/src/main/java/data/" + fileNme);
-        JSONParser parser = new JSONParser();
-        String value = null;
-        try {
-            JSONArray jArray = (JSONArray) parser.parse(new FileReader(srcFile));
-            for (Object jsonObj : jArray) {
-                JSONObject person = (JSONObject) jsonObj;
-                value = (String) person.get(obj);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return value;
-    }
 
 }
