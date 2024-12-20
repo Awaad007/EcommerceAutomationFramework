@@ -9,7 +9,7 @@ public class WishListPage extends PageBase {
     //locators
     private final By message = By.xpath("//div[contains(@class,'alert-success')]");
 
-    //Dynamic locator for choosing specific product to be removed form wishList
+    //Implement Dynamic locator for choosing specific product to be removed form wishList
     private By getRemoveBtnLocator(String productName) {
         return By.xpath("//a[.='" + productName + "']/ancestor::tr//a[@class='btn btn-danger']");
     }
