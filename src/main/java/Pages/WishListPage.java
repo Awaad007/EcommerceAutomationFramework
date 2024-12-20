@@ -6,20 +6,21 @@ import org.openqa.selenium.WebDriver;
 
 public class WishListPage extends PageBase {
 
-    String productData = "DynamicData.json";
-    public String productName = jsonReader("ProductName", productData);
-
     //locators
     //Dynamic locator for choosing specific product to be removed form wishList
-    private final By removeBtn = By.xpath("//a[.='" + productName + "']/ancestor::tr//a[@class='btn btn-danger']");
     private final By message = By.xpath("//div[contains(@class,'alert-success')]");
+
+    private By getRemoveBtnLocator(String productName) {
+        return By.xpath("//a[.='" + productName + "']/ancestor::tr//a[@class='btn btn-danger']");
+    }
 
     public WishListPage(WebDriver driver) {
         super(driver);
     }
 
     //methods
-    public void clickOnRemoveBtn() {
+    public void clickOnRemoveBtn(String productName) {
+        By removeBtn = getRemoveBtnLocator(productName);
         clickOnButton(removeBtn);
     }
 
