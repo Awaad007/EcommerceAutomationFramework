@@ -4,6 +4,7 @@ import Common.PageBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 public class SearchPage extends PageBase {
@@ -17,7 +18,7 @@ public class SearchPage extends PageBase {
     private final By productTitle = By.partialLinkText("MacBook Air");
 
     private final By compareBtn = By.xpath("//a[contains(@href, 'id=43&search')]/ancestor::div[2]//button[contains(@data-original-title, 'Compare')]");
-    private final By compareLink = By.linkText("product comparison");
+    private final By compareLink = By.partialLinkText("product comparison");
 
     public SearchPage(WebDriver driver) {
         super(driver);
@@ -40,6 +41,8 @@ public class SearchPage extends PageBase {
     }
 
     public SearchPage userNavigateToCompareScreen() {
+        WebElement compareElement = find(compareLink);
+        wait.until(ExpectedConditions.visibilityOf(compareElement));
         clickOnButton(compareLink);
         return this;
     }
